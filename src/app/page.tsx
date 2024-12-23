@@ -1,8 +1,10 @@
 import Image from "next/image";
 import ButtonLogin from "@/components/ButtonLogin";
 import FAQListItem from "@/components/FAQListItem";
+import { auth } from "@/auth";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
   const pricingFeatureList = [
     "Collect Customer Feedback",
     "Unlimited boards",
@@ -25,7 +27,7 @@ export default function Home() {
               FAQ
             </a>
           </div>
-          <ButtonLogin />
+          <ButtonLogin session={session} />
         </div>
       </section>
       {/* Hero */}
@@ -48,7 +50,7 @@ export default function Home() {
             Create a feedback board in minutes, prioritize features, and build
             products your customers will love.
           </p>
-          <ButtonLogin />
+          <ButtonLogin session={session} />
         </div>
       </section>
       {/* Pricing */}

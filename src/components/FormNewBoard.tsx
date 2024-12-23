@@ -3,10 +3,12 @@
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const FormNewBoard = () => {
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -16,13 +18,10 @@ const FormNewBoard = () => {
     setIsLoading(true);
 
     try {
-      // 1. Asynchronus api call to create new board
       const newBoardData = await axios.post("/api/board", { name });
-
       setName("");
-
       toast.success("Board created!");
-      // 2. Redirect to dedicated board page
+      router.refresh();
     } catch (e: any) {
       // 1. Display error message
       const errorMessage =
@@ -36,7 +35,7 @@ const FormNewBoard = () => {
 
   return (
     <form
-      className="bg-base-100 p-8 rounded-3xl space-y-8"
+      className="bg-base-100 p-8 rounded-3xl space-y-8 w-full shrink-0 md:w-96 md:sticky top-6"
       onSubmit={handleSubmit}
     >
       <p className="font-bold text-lg">Create a new feedback board</p>

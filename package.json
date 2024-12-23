@@ -9,12 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^3.7.4",
     "axios": "^1.7.8",
+    "bad-words": "^4.0.0",
+    "mongodb": "^6.11.0",
     "mongoose": "^8.8.3",
     "next": "14.2.0",
+    "next-auth": "^5.0.0-beta.25",
     "react": "^18",
     "react-dom": "^18",
-    "react-hot-toast": "^2.4.1"
+    "react-hot-toast": "^2.4.1",
+    "resend": "^4.0.1",
+    "stripe": "^17.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",
